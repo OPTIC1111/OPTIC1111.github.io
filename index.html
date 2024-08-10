@@ -8,7 +8,7 @@
     body {
         margin: 0;
         overflow: hidden;
-        font-family: 'Optic', sans-serif; /* Ensure this is applied throughout */
+        font-family: 'Optic', sans-serif;
     }
 
     video {
@@ -19,7 +19,7 @@
         min-height: 100%;
         width: auto;
         height: auto;
-        z-index: -100; /* Keep the z-index as -100 for the background video */
+        z-index: -100;
         transform: translateX(-50%) translateY(-50%);
     }
 
@@ -33,6 +33,7 @@
         flex-direction: column;
         color: white;
         z-index: 1;
+        display: none; /* Hide content initially */
     }
 
     .content::before {
@@ -40,18 +41,18 @@
         position: absolute;
         top: 80%;
         left: 50%;
-        width: 40%; /* Adjust width as needed */
-        height: 50%; /* Adjust height as needed */
-        background: rgba(255, 255, 255, 0.1); /* Slightly opaque white background */
-        backdrop-filter: blur(10px); /* Adjust the blur effect as needed */
+        width: 40%;
+        height: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
         transform: translateX(-50%) translateY(-50%);
-        z-index: -1; /* Ensure it's behind the content but above the video */
-        border-radius: 12px; /* Adjust the border radius as needed */
+        z-index: -1;
+        border-radius: 12px;
     }
 
     .button-container {
         display: flex;
-        margin-top: 20px; /* Adjust the margin as needed */
+        margin-top: 20px;
     }
 
     button {
@@ -64,17 +65,17 @@
         cursor: pointer;
         transition: 0.3s;
         border-radius: 12px;
-        margin-right: 10px; /* Adjust the margin between buttons */
+        margin-right: 10px;
     }
 
     button:last-child {
-        margin-right: 0; /* Remove margin for the last button */
+        margin-right: 0;
     }
 
     .content h1 {
         font-size: 100px;
         margin: 0;
-        margin-top: 520px; /* Adjust the margin as needed */
+        margin-top: 520px;
     }
 
     button:hover {
@@ -84,7 +85,6 @@
         transition: 1.5s;
     }
 
-    /* Range slider style to dark gray */
     input[type=range] {
       -webkit-appearance: none;
       margin: 18px 0;
@@ -120,29 +120,73 @@
       cursor: pointer;
     }
 
-    /* Media query for smaller screens */
+    .enter-screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100; /* Make sure it's above everything else */
+    }
+
+    .enter-screen h1 {
+        color: white;
+        font-size: 40px;
+        margin: 0;
+        cursor: pointer;
+    }
+
     @media (max-width: 428px), (max-height: 926px) {
         .content::before {
-            width: 100%; /* Full width */
-            transform: none; /* Remove translation */
+          position: absolute;
+          top: 80%;
+          left: 50%;
+          width: 100%;
         }
     }
   </style>
 </head>
 <body>
-  <div class="content">
+  <div class="enter-screen" id="enterScreen">
+    <h1 onclick="enterSite()">Click to Enter</h1>
+  </div>
+  
+  <div class="content" id="mainContent">
     <h1 style="pointer-events: none;">chris</h1>
-    <h3 style="pointer-events: none;">
-        "its only delusional until it works"</h3>
+    <h3 style="pointer-events: none;">"its only delusional until it works"</h3>
     <div class="button-container">
       <button onclick="redirectToSolvio()">Validate</button>
       <button onclick="redirectToDiscord()">Discord</button>
       <button onclick="redirectToContact()">Contact</button>
     </div>
   </div>
+  
   <video autoplay loop draggable="false">
     <source src="./R35 GTR EDIT｜ 4K [rVt3Tp5sbh8].webm">
     Your browser does not support the video tag.
   </video>
+
+  <script>
+    function enterSite() {
+        document.getElementById('enterScreen').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'flex';
+    }
+
+    function redirectToSolvio() {
+        window.location.href = "https://validate.gg";
+    }
+
+    function redirectToDiscord() {
+        window.location.href = "https://discord.gg/CzWgFrsFf2";
+    }
+
+    function redirectToContact() {
+        window.location.href = "mailto:7chrismarshall57@gmail.com";
+    }
+  </script>
 </body>
 </html>
