@@ -1,134 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TERRORIST</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chris2rich</title>
+  <style>
     body {
         margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
         overflow: hidden;
-        color: #fff;
-        font-family: 'Arial', sans-serif;
+        font-family: 'Optic', sans-serif; /* Ensure this is applied throughout */
     }
 
-    #video-background {
+    video {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-        pointer-events: none;
-    }
-
-    .blur-effect {
-        position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 500px;
-        height: 250px;
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        overflow: hidden;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100; /* Keep the z-index as -100 for the background video */
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
         display: flex;
-        justify-content: center;
         align-items: center;
-        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+        z-index: 1;
     }
 
-    .typewriter {
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 2px solid white;
-        animation: typing 3s steps(30, end) forwards;
-    }
-
-    @keyframes typing {
-        from {
-            width: 0;
-        }
-    }
-
-    .text {
+    .content::before {
+        content: "";
         position: absolute;
-        top: -100px;
-        left: -100px;
-        width: 50px;
-        height: 50px;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
+        top: 80%;
+        left: 50%;
+        width: 40%; /* Adjust width as needed */
+        height: 50%; /* Adjust height as needed */
+        background: rgba(255, 255, 255, 0.1); /* Slightly opaque white background */
+        backdrop-filter: blur(10px); /* Adjust the blur effect as needed */
+        transform: translateX(-50%) translateY(-50%);
+        z-index: -1; /* Ensure it's behind the content but above the video */
+        border-radius: 12px; /* Adjust the border radius as needed */
     }
-</style>
+
+    .button-container {
+        display: flex;
+        margin-top: 20px; /* Adjust the margin as needed */
+    }
+
+    button {
+        background: none;
+        border: 1px solid white;
+        padding: 10px 20px;
+        color: white;
+        font-family: 'Optic', sans-serif;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 12px;
+        margin-right: 10px; /* Adjust the margin between buttons */
+    }
+
+    button:last-child {
+        margin-right: 0; /* Remove margin for the last button */
+    }
+
+    .content h1 {
+        font-size: 100px;
+        margin: 0;
+        margin-top: 520px; /* Adjust the margin as needed */
+    }
+
+    button:hover {
+        cursor: cell;
+        background: white;
+        color: black;
+        transition: 1.5s;
+    }
+
+    /* Range slider style to dark gray */
+    input[type=range] {
+      -webkit-appearance: none;
+      margin: 18px 0;
+      border-radius: 12px;
+      height: 10px;
+      background: #2c2c2c;
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    input[type=range]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    input[type=range]::-ms-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
 <body>
-
-<video id="video-background" autoplay muted loop>
-    <source src="https://cdn.discordapp.com/attachments/879777854668283945/1234652691368640552/background.mp4?ex=6631836c&is=663031ec&hm=014c7d121e7fe79fd93d5dd54323d9329316919991d1335f7e06dddd8a89e0c0&" type="video/mp4">
+  <div class="content">
+    <h1 style="pointer-events: none;">chris</h1>
+    <h3 style="pointer-events: none;">
+        "its only delusional until it works"</h3>
+    <div class="button-container">
+      <button onclick="redirectToSolvio()">Validate</button>
+      <button onclick="redirectToDiscord()">Discord</button>
+      <button onclick="redirectToContact()">Contact</button>
+    </div>
+  </div>
+  <video autoplay loop draggable="false">
+    <source src="./R35 GTR EDIT｜ 4K [rVt3Tp5sbh8].webm">
     Your browser does not support the video tag.
-</video>
-<audio id="audio-background" autoplay loop>
-    <source src="music.mp3" type="audio/mp3">
-    Your browser does not support the audio tag.
-</audio>
-
-<div class="blur-effect">
-    <h1 class="typewriter"></h1>
-</div>
-
-<button class="text"></button>
-
-<script>
-    const text = 'TERRORIST';
-    const duration = text.length * 0.5;
-    const h1 = document.querySelector('.typewriter');
-
-    for (let i = 0; i < text.length; i++) {
-        setTimeout(() => {
-            h1.textContent += text[i];
-        }, i * 840);
-    }
-
-    function redirectToPage() {
-        window.location.href = 'z.html';
-    }
-
-    document.querySelector('.text').addEventListener('click', () => {
-        redirectToPage();
-    });
-
-    function getRandomPosition() {
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-        const buttonWidth = 50;
-        const buttonHeight = 50;
-        const x = Math.floor(Math.random() * (screenWidth - buttonWidth));
-        const y = Math.floor(Math.random() * (screenHeight - buttonHeight));
-        return { x, y };
-    }
-
-    function setRandomPosition() {
-        const position = getRandomPosition();
-        const button = document.querySelector('.text');
-        button.style.top = position.y + 'px';
-        button.style.left = position.x + 'px';
-    }
-
-    setRandomPosition();
-
-    setInterval(() => {
-        setRandomPosition();
-    }, 3000);
-</script>
-
+  </video>
 </body>
 </html>
