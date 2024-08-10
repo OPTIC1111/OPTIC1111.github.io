@@ -120,6 +120,17 @@
       cursor: pointer;
     }
 
+    /* Media query for smaller screens */
+    @media (max-width: 428px), (max-height: 926px) {
+        .content::before {
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            top: 0;
+            left: 0;
+            transform: none; /* Remove translation */
+            border-radius: 0; /* Remove border-radius */
+        }
+    }
   </style>
 </head>
 <body>
